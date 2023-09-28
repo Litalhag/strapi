@@ -1,12 +1,18 @@
+import { useGlobalContext } from '../Context'
 import sublinks from '../data'
 
-export const NavLinks = () => {
+const NavLinks = () => {
+  const { setPageId } = useGlobalContext()
   return (
     <div className="nav-links">
       {sublinks.map((item) => {
         const { pageId, page } = item
         return (
-          <button key={pageId} className="nav-link">
+          <button
+            key={pageId}
+            className="nav-link"
+            onMouseEnter={() => setPageId(pageId)}
+          >
             {page}
           </button>
         )
@@ -14,3 +20,4 @@ export const NavLinks = () => {
     </div>
   )
 }
+export default NavLinks
